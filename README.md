@@ -18,5 +18,5 @@ Credits
 Struppi: For his SPI-slave and master code.
 [Bytewerk Rhodecode](http://rhodecode.bytewerk.org/Mikrocontroller/RGByteClock/rgbyteclock-firmware)
 
-Tim/cpldcpu: For his simle and light WS2812 library 
+Tim/cpldcpu: For his simple and light WS2812 library 
 [cpldcpu/light_ws2812](https://github.com/cpldcpu/light_ws2812)
