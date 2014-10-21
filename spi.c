@@ -9,12 +9,12 @@
 #include <string.h>
 #include <avr/interrupt.h>
 
-static uint8_t receivedData[999];
+static uint8_t receivedData[(NUM_LEDS*3)];
 static volatile uint16_t count = 0;
 static uint8_t isDataAvailable = 0;
 
 ISR(SPI_STC_vect) {
-	if ( count < 999 ) {
+	if ( count < (NUM_LEDS*3) ) {
 		receivedData[ count ] = SPDR;
 		count++;
 	}
@@ -54,7 +54,7 @@ int8_t spi_slave_init() {
 uint8_t* spi_receive( ) {
 	if ( isDataAvailable == 1) {
 		isDataAvailable = 0;
-		memset( receivedData + count, 0, 999 - count );
+		memset( receivedData + count, 0, (NUM_LEDS*3) - count );
 		return receivedData;
 	} else {
 		return NULL;

@@ -30,7 +30,7 @@ int main( ) {
 			//Write received data to the ledstrip
 			//Technically this function wants a RGB-struct but casts it internal to an uint8 array.
 			//So we simply ignore the struct to make it easier for us and to save RAM on the ATmega.
-			ws2812_setleds( data, 333 );
+			ws2812_setleds( data, NUM_LEDS );
 			//Enable interrupts again
 			sei();
 			//Set ready to receive to get data
