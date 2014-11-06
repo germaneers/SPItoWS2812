@@ -1,15 +1,16 @@
 PRG            = SPItoWS2812
 OBJ            = SPItoWS2812.o spi.o
-MCU_TARGET     = atmega88p
+F_CPU          = 8000000UL
+MCU_TARGET     = atmega328
+NUM_LEDS       = 8
 OPTIMIZE       = -Os
-NUM_LEDS       = 111
 
 DEFS           =
 LIBS           =
 
 CC             = avr-gcc
 
-override CFLAGS        = -g -Wall $(OPTIMIZE) -DF_CPU=16000000UL -std=gnu99 -mmcu=$(MCU_TARGET) $(DEFS) -DNUM_LEDS=$(NUM_LEDS)
+override CFLAGS        = -g -Wall $(OPTIMIZE) -DF_CPU=$(F_CPU) -std=gnu99 -mmcu=$(MCU_TARGET) $(DEFS) -DNUM_LEDS=$(NUM_LEDS)
 override LDFLAGS       = -Wl,-Map,$(PRG).map
 
 OBJCOPY        = avr-objcopy
@@ -18,6 +19,7 @@ SIZE           = avr-size -A
 
 
 all: $(PRG).hex $(PRG).bin
+
 
 $(PRG).elf: $(OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
