@@ -30,7 +30,8 @@ ISR(PCINT0_vect) {
 		isDataAvailable = 1;
 	} else {
 		// falling edge
-		PORTB &= ~( 1<<PB1 );
+		PORTC &= ~( 1<<PC5 );
+		PORTC &= ~( 1<<PC2 );
 		isDataAvailable = 0;
 		count = 0;
 	}

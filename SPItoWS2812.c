@@ -15,8 +15,12 @@
 #include "spi.h"
 
 int main( ) {
-	DDRB |= ( 1<<PB1 );
-	PORTB |= ( 1<<PB1 );
+	DDRC |= ( 1<<PC5 );
+	PORTC |= ( 1<<PC5 );
+	
+	DDRC |= (1<<PC2);  // TEST LED
+	PORTC |= (1<<PC2);
+	
 	spi_slave_init();
 	sei();
 	uint8_t* data;
@@ -34,7 +38,8 @@ int main( ) {
 			//Enable interrupts again
 			sei();
 			//Set ready to receive to get data
-			PORTB |= ( 1<<PB1 );
+			PORTC |= ( 1<<PC5 );
+			PORTC |= (1<<PC2);
 		}
 	}
 }
