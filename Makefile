@@ -41,4 +41,4 @@ bin:  $(PRG).bin
 	$(OBJCOPY) -j .text -j .data -O binary $< $@
 
 prg: $(PRG).bin
-	sudo avrdude -p m328p -c stk500v1 -P /dev/ttyUSB0 -b57600 -U flash:w:$(PRG).bin
+	sudo avrdude -p m328 -c jtag3isp -U flash:w:$(PRG).bin
